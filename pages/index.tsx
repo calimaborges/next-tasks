@@ -37,6 +37,7 @@ export default function Home({ tasks }: Props) {
       <ol>
         {tasks.map((task) => (
           <li key={task._id} className="flex">
+            {task.order}: 
             <form action={`/api/task/${task._id}`} method="post">
               <input type="text" name="title" defaultValue={task.title} />
             </form>
