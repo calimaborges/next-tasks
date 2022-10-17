@@ -2,8 +2,10 @@
 
 ## TODO
 
-- OK: Criar tipo de task
-- OK: Adicionar novas tarefas
-- OK: Editar tarefa em posição
-- Mudar ordem de cada tarefa
-- Adicionar tag na tarefa
+- OK: Create Task typescript type
+- OK: Add new tasks
+- OK: Edit task in position
+- Change task order
+- Add task tags
+- Remove task tags
+- Parent/child tasks
