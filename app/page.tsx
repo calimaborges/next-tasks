@@ -1,17 +1,9 @@
-import listTasks from "../libs/tasks/list-tasks";
 import type { FrontendTask } from "../libs/tasks/task";
 import DeleteButton from "./delete-button";
 
 async function getData(): Promise<{ tasks: FrontendTask[] }> {
-  const tasks = await listTasks();
-  return {
-    tasks: tasks.map((task) => ({
-      ...task,
-      _id: task._id?.toString() ?? null,
-      created_at: task.created_at.toString(),
-      updated_at: task.updated_at.toString(),
-    })),
-  };
+  const res = await fetch("http://localhost:3000/api/task");
+  return { tasks: await res.json() };
 }
 
 export default async function Home() {

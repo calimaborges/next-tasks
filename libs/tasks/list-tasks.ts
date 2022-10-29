@@ -1,5 +1,3 @@
-import "server-only";
-
 import { mongoCollection, mongoConnect, mongoDisconnect } from "../mongo";
 import type { Task } from "./task";
 
@@ -9,7 +7,7 @@ export default async function listTasks(): Promise<Task[]> {
     return await mongoCollection(connection)
       .find({})
       .sort({ order: -1 })
-      .toArray()
+      .toArray();
   } finally {
     await mongoDisconnect(connection);
   }
