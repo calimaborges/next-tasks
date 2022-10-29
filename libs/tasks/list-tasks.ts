@@ -1,5 +1,7 @@
+import "server-only";
+
 import { mongoCollection, mongoConnect, mongoDisconnect } from "../mongo";
-import { Task } from "./task";
+import type { Task } from "./task";
 
 export default async function listTasks(): Promise<Task[]> {
   const connection = await mongoConnect();

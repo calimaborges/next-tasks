@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 
 export type FrontendTask = {
-  _id: string;
+  _id: string | null;
   title: string;
   tags: string[];
   order: number;
