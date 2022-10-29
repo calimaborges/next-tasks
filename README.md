@@ -1,5 +1,12 @@
 # tasks
 
+## RUN
+
+```bash
+npm install
+npm run dev
+```
+
 ## TODO
 
 - OK: Create Task typescript type

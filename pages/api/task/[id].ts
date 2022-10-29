@@ -2,7 +2,6 @@ import { ObjectId } from "mongodb";
 import type { NextApiRequest, NextApiResponse } from "next";
 import deleteTask from "../../../libs/tasks/delete-task";
 import saveTask from "../../../libs/tasks/save-task";
-import { FrontendTask, Task } from "../../../libs/tasks/task";
 
 type Data = {
   title: string;
@@ -10,18 +9,10 @@ type Data = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<FrontendTask>
+  res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const task: Task = {
-      _id: new ObjectId(req.query.id as string),
-      title: req.body.title,
-      created_at: new Date(),
-      updated_at: new Date(),
-      tags: [],
-      order: 0,
-    };
-    await saveTask(task);
+    await saveTask({ _id: req.query.id as string, title: req.body.title });
   } else if (req.method === "DELETE") {
     await deleteTask(new ObjectId(req.query.id as string));
   }
