@@ -13,7 +13,7 @@ npm run dev
 - OK: Add new tasks
 - OK: Edit task in position
 - OK: Change task order
+- UI Improvement
 - Add task tags
 - Remove task tags
 - Parent/child tasks
-- UI Improvement
