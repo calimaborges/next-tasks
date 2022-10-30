@@ -1,7 +1,6 @@
-import type { NextPage } from "next";
-import { SyntheticEvent } from "react";
-import listTasks from "../libs/tasks/list-tasks";
 import { FrontendTask } from "../libs/tasks/task";
+import TaskCard from "../components/task-card";
+import listTasks from "../libs/tasks/list-tasks";
 
 type Props = {
   tasks: FrontendTask[];
@@ -22,27 +21,14 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ tasks }: Props) {
-  function createDeleteHandler(id: string) {
-    return async function deleteHandler() {
-      await fetch(`/api/task/${id}`, { method: "delete" });
-      location.reload();
-    };
-  }
-
   return (
     <div className="p-4">
       <form action="/api/task" method="post">
         <input type="text" name="title" required placeholder="New task" />
       </form>
-      <ol>
+      <ol className="flex flex-col gap-2">
         {tasks.map((task) => (
-          <li key={task._id} className="flex">
-            {task.order}: 
-            <form action={`/api/task/${task._id}`} method="post">
-              <input type="text" name="title" defaultValue={task.title} />
-            </form>
-            <button onClick={createDeleteHandler(task._id)}>[delete]</button>
-          </li>
+          <TaskCard task={task} key={task._id} />
         ))}
       </ol>
     </div>
