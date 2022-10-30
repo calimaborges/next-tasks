@@ -1,6 +1,7 @@
 import { FrontendTask } from "../libs/tasks/task";
 import TaskCard from "../components/task-card";
 import listTasks from "../libs/tasks/list-tasks";
+import Input from "../components/input";
 
 type Props = {
   tasks: FrontendTask[];
@@ -22,9 +23,9 @@ export async function getServerSideProps() {
 
 export default function Home({ tasks }: Props) {
   return (
-    <div className="p-4">
+    <div className="p-4 flex flex-col gap-1">
       <form action="/api/task" method="post">
-        <input type="text" name="title" required placeholder="New task" />
+        <Input type="text" name="title" required placeholder="New task" />
       </form>
       <ol className="flex flex-col gap-2">
         {tasks.map((task) => (

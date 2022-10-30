@@ -9,15 +9,17 @@ type Props = {
 
 export default function TaskCard({ task }: Props) {
   return (
-    <li className="flex items-center gap-1" >
-      <small className="text-gray-400 font-mono">{task.order}</small>
-      <small className="text-gray-500 font-mono">{task._id}</small>
+    <li className="flex flex-col gap-1 p-2 border rounded">
       <form action={`/api/task/${task._id}`} method="post">
-        <input type="text" name="title" defaultValue={task.title} />
+        <input className="p-1 w-full" type="text" name="title" defaultValue={task.title} />
       </form>
-      <DeleteButton task={task} />
-      <MoveButton direction={Direction.UP} task={task} />
-      <MoveButton direction={Direction.DOWN} task={task} />
+      <div className="flex gap-1 items-baseline">
+        <DeleteButton task={task} />
+        <MoveButton direction={Direction.UP} task={task} />
+        <MoveButton direction={Direction.DOWN} task={task} />
+        <small className="text-gray-400 font-mono">{task.order}</small>
+        <small className="text-gray-500 font-mono">{task._id}</small>
+      </div>
     </li>
   );
 }
